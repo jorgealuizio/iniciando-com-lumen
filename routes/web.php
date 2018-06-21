@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 
 $router->get('/hello/{name}', ['as' => 'hello-world', 'uses' => 'HelloController@index']);
 
-$router->group(['prefix' => 'api'], function() use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'cors'], function() use ($router) {
     $router->get('/', 'Api\WelcomeController@index');
     $router->get('/users', 'Api\UsersController@index');
     $router->get('/users/{id}', 'Api\UsersController@show');
